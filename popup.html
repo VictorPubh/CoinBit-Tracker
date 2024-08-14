@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CoinBit Tracker</title>
+
+    <script src="popup.js"></script>
+    <meta charset="UTF-8" />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            width: 300px;
+            max-width: 100%;
+        }
+
+        h2 {
+            color: #4CAF50;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        input[type="number"] {
+            text-align: center;
+            padding: 7px 0;
+            font-size: 16px;
+            width: 100%;
+            border: 1px solid rgb(30, 30, 30);
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #F9AB00;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        .about {
+            font-size: 12px;
+        }
+
+        #message {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 1px solid #ccc;
+        }
+
+        #tracker {
+            font-size: 20px;
+        }
+
+        #price {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        #alert {
+            margin-bottom: -10px;
+            margin-top: 10px;
+        }
+
+        #alert .target {
+            color: #F9AB00;
+        }
+
+        #notifications {
+            margin-top: 20px;
+        }
+
+        .notification {
+            background-color: #f2f2f2;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        .btn-green {
+            background-color: #4CAF50;
+        }
+
+        .btn-red {
+            background-color: #ff5252;
+        }
+
+        #percent {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            margin-top: 10px;
+            gap: 4px;
+        }
+
+        #percent input {
+            font-size: 12px;
+        }
+
+        #direction {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin: 10px 0;
+        }
+
+        #direction div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #direction div label {
+            margin-top: 2px;
+        }
+
+        .small {
+            font-size: 12px;
+        }
+
+        #tracker {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #tracker img {
+            width: 185px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        #tracker .value {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>CoinBit Tracker</h2>
+
+    <p class="about">Defina o preço-alvo de <span class="pair">BTCUSDT</span> em U$:</p>
+    <input type="number" id="targetPrice" placeholder="Digite o preço-alvo">
+
+    <div id="percent">
+        <button class="percent-button btn-green">0.5%</button>
+        <button class="percent-button btn-green">1%</button>
+        <button class="percent-button btn-green">2%</button>
+        <button class="percent-button btn-green">5%</button>
+        <button class="percent-button btn-green">10%</button>
+        <input class="percent-input" type="number" value="50" min="0" />
+    </div>
+
+    <div id="direction">
+        <div>
+            <input type="radio" name="direction" value="up" checked>
+            <label for="direction">
+                Para Cima
+            </label>
+        </div>
+    
+        <div>
+            <input type="radio" name="direction" value="down">
+            <label for="direction">
+                Para Baixo
+            </label>
+        </div>
+    </div>
+
+    <button id="setPrice">Notificar</button>
+
+    <div id="tracker">
+        <div id="alert">
+            <span id="type" class="small">U$</span>
+            <span class="target">0</span>
+            <!-- <span id="time" class="small">(Notificar)</span> -->
+        </div>
+    </div>
+
+    <hr />
+
+    <div id="tracker">
+        <img src="https://alternative.me/crypto/fear-and-greed-index.png" alt="Latest Crypto Fear & Greed Index" />
+
+        <div class="value">
+            <span id="type" class="small">U$</span>
+            <span id="price">0</span>
+            <span id="time" class="small">(Agora)</span>
+        </div>
+
+        <button id="getPrice" class="btn-green">Atualizar</button>
+    </div>
+    <!--
+    <div id="notifications">
+        <h3>Notificações</h3>
+        <div class="notification">Notificação 1</div>
+        <div class="notification">Notificação 2</div>
+    </div>
+    -->
+</body>
+
+</html>
